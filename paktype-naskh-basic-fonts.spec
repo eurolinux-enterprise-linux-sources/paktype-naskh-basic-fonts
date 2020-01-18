@@ -1,15 +1,16 @@
+%global priority 65-0
 %global fontname paktype-naskh-basic
-%global fontconf 67-paktype-naskh-basic
+%global fontconf %{priority}-%{fontname}
 
 Name:	%{fontname}-fonts
 Version:     4.1
-Release:     1%{?dist}
+Release:     3%{?dist}
 Summary:     Fonts for Arabic, Farsi, Urdu and Sindhi from PakType
 Group:		User Interface/X
 License:     GPLv2 with exceptions
 URL:		https://sourceforge.net/projects/paktype/
 Source0:     http://downloads.sourceforge.net/paktype/Individual-Release/PakType-Naskh-Basic-%{version}.tar.gz
-Source1:	%{fontconf}.conf
+Source1:	%{name}.conf
 BuildArch:   noarch
 BuildRequires:	fontpackages-devel
 Requires:   fontpackages-filesystem
@@ -52,6 +53,12 @@ ln -s %{_fontconfig_templatedir}/%{fontconf}.conf \
 %doc PakType_Naskh_Basic_License.txt PakTypeNaskhBasicFeatures.pdf
 
 %changelog
+* Tue Feb 11 2014 Pravin Satpute <psatpute@redhat.com> - 4.1-3
+- Resolves: rhbz#1061590 - Default font for urdu should be paktype-naskh instead of free-mono
+
+* Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 4.1-2
+- Mass rebuild 2013-12-27
+
 * Mon Apr 22 2013 Pravin Satpute <psatpute@redhat.com> - 4.1-1
 - Upstream 4.1 Release
 
@@ -87,7 +94,7 @@ ln -s %{_fontconfig_templatedir}/%{fontconf}.conf \
 * Fri Mar 12 2010 Naveen Kumar <nkumar@redhat.com> - 3.0-5
 - changed the name of package from paktype-nashk-basic to paktype-naskh-basic
 
-* Fri Mar 9 2010 Naveen Kumar <nkumar@redhat.com> - 3.0-4
+* Tue Mar 9 2010 Naveen Kumar <nkumar@redhat.com> - 3.0-4
 - removed redundant  BuildRequires from specfile
 - removed unnecessary rm/rmdir's from specfile
 - Sane updates in docs.
